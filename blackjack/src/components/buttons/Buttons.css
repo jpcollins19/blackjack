@@ -1,0 +1,10 @@
+.play-game-button {
+  height: 5rem;
+  width: 20rem;
+  font-size: 40px;
+}
+
+.hit-button {
+  height: 2rem;
+  width: 5rem;
+}

@@ -1,6 +1,6 @@
-/* .home-page {
-  background-image: url("https://thekatynews.com/wp-content/uploads/2020/10/Black-Jack-1024x576.png");
-  height: 60rem;
+.home-page {
+  /* background-image: url("https://thekatynews.com/wp-content/uploads/2020/10/Black-Jack-1024x576.png");
+  height: 60rem; */
   background-size: cover;
   background-position: center;
   display: flex;
@@ -8,7 +8,7 @@
   align-items: center;
 }
 
-
+/*/////headers/////*/
 
 .login-text {
 }
@@ -18,7 +18,7 @@
   width: 5rem;
 }
 
-
+/*/ ////play-game-page/////*/
 
 /* .play-game-page {
   background-image: url("https://media.istockphoto.com/vectors/black-jack-table-vector-illustration-eps-10-casino-vector-id1147481668?b=1&k=20&m=1147481668&s=170667a&w=0&h=FU9HT2uXOHxqXf7_6yH287uaL54Yp0cBZJ12969cSPI=");
@@ -29,7 +29,7 @@
   flex-direction: column;
   justify-content: space-around;
 } */
-/* 
+
 .play-game-page > div {
   display: flex;
   justify-content: center;
@@ -92,9 +92,10 @@
 
 .card-cont-marg-top > div {
   margin: 0rem 0.3rem 0rem 0.3rem;
-} */
+}
 
-/* 
+/*/ ////buttons/////*/
+
 .play-game-button {
   height: 5rem;
   width: 20rem;
@@ -104,9 +105,10 @@
 .hit-button {
   height: 2rem;
   width: 5rem;
-} */
+}
 
-/* 
+/*/ ////spades images/////*/
+
 .AS {
   background-image: url("https://www.dcode.fr/tools/playing-cards/images/pique_a.png");
   width: 4em;
@@ -198,7 +200,7 @@
   background-size: cover;
 }
 
-
+/*/ ////clubs images/////*/
 
 .AC {
   background-image: url("");
@@ -291,7 +293,7 @@
   background-size: cover;
 }
 
-
+/*/ ////hearts images/////*/
 
 .AH {
   background-image: url("");
@@ -382,9 +384,10 @@
   width: 4em;
   height: 5em;
   background-size: cover;
-} */
+}
 
-/* 
+/*/ ////diam images/////*/
+
 .AD {
   background-image: url("");
   width: 4em;
@@ -474,4 +477,4 @@
   width: 4em;
   height: 5em;
   background-size: cover;
-} */
+}
