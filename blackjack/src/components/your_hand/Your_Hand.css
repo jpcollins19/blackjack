@@ -1,0 +1,37 @@
+.your-cards-row {
+  border: solid 5px blue;
+}
+
+.your-hand-row {
+  border: solid 5px red;
+}
+
+.card-cont-your-hand {
+  border: solid 3px orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.card-cont-marg-top {
+  border: solid 3px orange;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 1rem 0rem 1rem;
+}
+
+.card-cont-your-hand > div {
+  height: 8rem;
+  width: 6rem;
+}
+
+.card-cont-marg-top > div {
+  height: 8rem;
+  width: 6rem;
+}
+
+.card-cont-marg-top > div {
+  margin: 0rem 0.3rem 0rem 0.3rem;
+}

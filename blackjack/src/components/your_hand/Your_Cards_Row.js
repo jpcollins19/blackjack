@@ -6,7 +6,6 @@ import "./Card_Images.css";
 import Start_Game_Button from "./buttons/Start_Game_Button";
 import Hit_Button from "./buttons/Hit_Button";
 import Stay_Button from "./buttons/Stay_Button";
-import Your_Hand from "./your_hand/Your_Hand";
 
 const Play_Game_Page = () => {
   const [yourHand, setyourHand] = useState([]);
@@ -39,17 +38,15 @@ const Play_Game_Page = () => {
   return (
     <Router>
       <div className="play-game-page">
-        <div>
-          <div className="dealer-hand-row">
-            <div className="card-cont">
-              <div className="AS"></div>
-            </div>
+        <div className="dealer-hand-row">
+          <div className="card-cont">
+            <div className="AS"></div>
           </div>
-          <div className="dealer-cards-row">
-            <div className="card-cont-marg-bottom">
-              <div className="AD"></div>
-              <div className="twoD"></div>
-            </div>
+        </div>
+        <div className="dealer-cards-row">
+          <div className="card-cont-marg-bottom">
+            <div className="AD"></div>
+            <div className="twoD"></div>
           </div>
         </div>
         <div className="middle-row">
@@ -62,7 +59,17 @@ const Play_Game_Page = () => {
             </div>
           )}
         </div>
-        <Your_Hand />
+        <div className="your-cards-row">
+          <div className="card-cont-marg-top">
+            <div className="AC"></div>
+            <div className="AH"></div>
+          </div>
+        </div>
+        <div className="your-hand-row">
+          <div className="card-cont">
+            <div className="AH"></div>
+          </div>
+        </div>
       </div>
     </Router>
   );

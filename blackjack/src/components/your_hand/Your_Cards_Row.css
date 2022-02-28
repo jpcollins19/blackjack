@@ -9,7 +9,7 @@
   justify-content: space-around;
 }
 
-.play-game-page > div > div {
+.play-game-page > div {
   display: flex;
   justify-content: center;
 }
@@ -28,14 +28,14 @@
   border: solid 5px green;
   height: 2rem;
 }
-/* 
+
 .your-cards-row {
   border: solid 5px blue;
 }
 
 .your-hand-row {
   border: solid 5px red;
-} */
+}
 
 .card-cont {
   border: solid 3px orange;
@@ -45,8 +45,6 @@
   margin: 1rem;
 }
 
-/*^^can delete after dealers stuff is completed*/
-
 .card-cont-marg-bottom {
   border: solid 3px orange;
   display: flex;
@@ -55,50 +53,40 @@
   margin: 0rem 1rem 1rem 1rem;
 }
 
-/*^^can delete after dealers stuff is completed*/
-
-/* .card-cont-marg-top {
+.card-cont-marg-top {
   border: solid 3px orange;
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1rem 1rem 0rem 1rem;
-} */
+}
 
 .card-cont > div {
   height: 8rem;
   width: 6rem;
 }
 
-/*^^can delete after dealers stuff is completed*/
-
 .card-cont-marg-bottom > div {
   height: 8rem;
   width: 6rem;
 }
 
-/*^^can delete after dealers stuff is completed*/
-
-/* .card-cont-marg-top > div {
+.card-cont-marg-top > div {
   height: 8rem;
   width: 6rem;
-} */
+}
 
 .card-cont > div {
   margin: 0rem 0.3rem 0rem 0.3rem;
 }
 
-/*^^can delete after dealers stuff is completed*/
-
 .card-cont-marg-bottom > div {
   margin: 0rem 0.3rem 0rem 0.3rem;
 }
 
-/*^^can delete after dealers stuff is completed*/
-
-/* .card-cont-marg-top > div {
+.card-cont-marg-top > div {
   margin: 0rem 0.3rem 0rem 0.3rem;
-} */
+}
 
 .hit-stay-cont {
   display: flex;

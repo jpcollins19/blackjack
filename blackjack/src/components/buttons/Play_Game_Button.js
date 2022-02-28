@@ -1,16 +1,10 @@
 import { Link } from "react-router-dom";
 import "./Buttons.css";
 
-const Play_Game_Button = ({ newGame, gameStarted }) => {
+const Play_Game_Button = () => {
   return (
-    <Link to="/play">
-      <button
-        disabled={gameStarted}
-        className="play-game-button"
-        onClick={newGame}
-      >
-        Play Game
-      </button>
+    <Link to="/play" style={{ textDecoration: "none" }}>
+      <button className="play-game-button">Play Game</button>
     </Link>
   );
 };
