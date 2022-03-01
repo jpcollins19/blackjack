@@ -1,19 +1,25 @@
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchUserHand } from "../../store";
+import Your_Hand_Row from "./Your_Hand_Row";
+import Your_Cards_Row from "./Your_Cards_Row";
 import "./Your_Hand.css";
 
 const Your_Hand = () => {
+  const dispatch = useDispatch();
+  let yourHand = useSelector((state) => state.yourHand);
+
+  useEffect(() => {
+    dispatch(fetchUserHand());
+  }, []);
+
+  const startingHand = yourHand.slice(0, 2);
+  const hitCards = yourHand.slice(2);
+
   return (
     <div>
-      <div className="your-cards-row">
-        <div className="card-cont-marg-top">
-          <div className="AC"></div>
-          <div className="AH"></div>
-        </div>
-      </div>
-      <div className="your-hand-row">
-        <div className="card-cont-your-hand">
-          <div className="AH"></div>
-        </div>
-      </div>
+      <Your_Cards_Row hitCards={hitCards} />
+      <Your_Hand_Row startingHand={startingHand} />
     </div>
   );
 };

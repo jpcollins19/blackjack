@@ -1,4 +1,4 @@
-import { HashRouter as Router, Route } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import Play_Game_Button from "./buttons/Play_Game_Button";
 import "./Home.css";
 

@@ -7,7 +7,21 @@ const _loadDeck = (deck) => {
 export const loadDeck = () => {
   return async (dispatch) => {
     const suit = ["S", "C", "H", "D"];
-    const cards = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+    const cards = [
+      "A",
+      "two",
+      "three",
+      "four",
+      "five",
+      "six",
+      "seven",
+      "eight",
+      "nine",
+      "ten",
+      "J",
+      "Q",
+      "K",
+    ];
 
     const deck = [];
 
