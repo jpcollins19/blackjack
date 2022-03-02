@@ -2,7 +2,8 @@ import { useEffect } from "react";
 import { withRouter, Route, Switch } from "react-router-dom";
 import { me } from "./store";
 import { useSelector, useDispatch } from "react-redux";
-import Login_Page from "./components/Login_Page";
+import Pre_Login_Page from "./components/login/Pre_Login_Page";
+import Login_Page from "./components/login/Login_Page";
 import Home_Page from "./components/Home_Page";
 import Play_Game_Page from "./components/Play_Game_Page";
 import Start_Game_Page from "./components/Start_Game_Page";
@@ -21,7 +22,7 @@ const Routes = () => {
     </Switch>
   ) : (
     <Switch>
-      <Route exact path="/" component={Login_Page} />
+      <Route exact path="/" component={Pre_Login_Page} />
       <Route exact path="/login" component={Login_Page} />
     </Switch>
   );

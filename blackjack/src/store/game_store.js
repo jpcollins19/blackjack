@@ -1,18 +1,12 @@
-const START_GAME = "START_GAME";
 const NEXT_UP = "NEXT_UP";
-
-const _startGame = (value) => {
-  return { type: START_GAME, value };
-};
+const HAND_DEALT = "HAND_DEALT";
 
 const _nextUp = () => {
   return { type: NEXT_UP };
 };
 
-export const startGame = (value) => {
-  return async (dispatch) => {
-    dispatch(_startGame(value));
-  };
+const _handDealt = (boolean) => {
+  return { type: HAND_DEALT, boolean };
 };
 
 export const nextUp = () => {
@@ -21,20 +15,26 @@ export const nextUp = () => {
   };
 };
 
-export const gameStarted = (state = false, action) => {
-  switch (action.type) {
-    case START_GAME:
-      state = action.value;
-      return state;
-    default:
-      return state;
-  }
+export const handDealt = (boolean) => {
+  return async (dispatch) => {
+    dispatch(_handDealt(boolean));
+  };
 };
 
 export const userTurn = (state = true, action) => {
   switch (action.type) {
     case NEXT_UP:
       state = !state;
+      return state;
+    default:
+      return state;
+  }
+};
+
+export const dealComplete = (state = false, action) => {
+  switch (action.type) {
+    case HAND_DEALT:
+      state = action.boolean;
       return state;
     default:
       return state;

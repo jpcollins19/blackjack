@@ -1,21 +1,16 @@
-import { useSelector } from "react-redux";
 import Hit_Button from "../buttons/Hit_Button";
 import Stay_Button from "../buttons/Stay_Button";
 import Next_Hand_Button from "../buttons/Next_Hand_Button";
 import "./Middle_Row.css";
 
 const Middle_Row = ({ hit, startNextHand, dealerIsUp }) => {
-  const gameStarted = useSelector((state) => state.gameStarted);
-
   return (
     <div className="middle-row">
-      {gameStarted && (
-        <div className="hit-stay-cont">
-          <Next_Hand_Button startNextHand={startNextHand} />
-          <Hit_Button hit={hit} />
-          <Stay_Button dealerIsUp={dealerIsUp} />
-        </div>
-      )}
+      <div className="hit-stay-cont">
+        <Next_Hand_Button startNextHand={startNextHand} />
+        <Hit_Button hit={hit} />
+        <Stay_Button dealerIsUp={dealerIsUp} />
+      </div>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import auth from "./auth_store";
 
 const { users } = require("./users_store");
 const { deck } = require("./deck_store");
-const { gameStarted, userTurn } = require("./game_store");
+const { userTurn, dealComplete } = require("./game_store");
 const { dealerHand, dealerHandCalc } = require("./dealer_hand_store");
 const { yourHand, yourHandCalc } = require("./your_hand_store");
 
@@ -13,12 +13,12 @@ const reducer = combineReducers({
   auth,
   users,
   deck,
-  gameStarted,
   dealerHand,
   yourHand,
   yourHandCalc,
   userTurn,
   dealerHandCalc,
+  dealComplete,
 });
 const middleware = applyMiddleware(thunk, logger);
 const store = createStore(reducer, middleware);

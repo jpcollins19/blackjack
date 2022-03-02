@@ -22,12 +22,22 @@ const Header_U = ({ handleClick }) => {
   const lightColor = "rgba(255, 255, 255, 0.7)";
   return (
     <div>
-      <AppBar color="primary" position="sticky" elevation={0}>
+      <AppBar
+        style={{ background: "rgb(8, 29, 8)" }}
+        color="primary"
+        position="sticky"
+        elevation={0}
+      >
         <Toolbar>
           <Grid container spacing={1} alignItems="center">
             <Grid item xs />
             <Grid item>
-              <Link to="/" onClick={handleClick}>
+              <Link
+                to="/"
+                onClick={handleClick}
+                className="Login-text"
+                style={{ textDecoration: "none" }}
+              >
                 Logout
               </Link>
             </Grid>
@@ -40,11 +50,17 @@ const Header_U = ({ handleClick }) => {
         position="static"
         elevation={0}
         sx={{ zIndex: 0 }}
+        style={{ background: "rgb(8, 29, 8)" }}
       >
         <Toolbar>
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
-              <Typography color="inherit" variant="h5" component="h1">
+              <Typography
+                color="inherit"
+                variant="h3"
+                component="h1"
+                textAlign="center"
+              >
                 Blackjack
               </Typography>
             </Grid>
@@ -56,6 +72,7 @@ const Header_U = ({ handleClick }) => {
         position="static"
         elevation={0}
         sx={{ zIndex: 0 }}
+        style={{ background: "rgb(8, 29, 8)" }}
       >
         <Link to="/home">
           <Tab label="Play Game" />

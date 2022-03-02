@@ -7,9 +7,6 @@ app.use(express.json());
 
 app.use("/dist", express.static(path.join(__dirname, "dist")));
 
-app.use("/public/css", express.static(path.join(__dirname, "public/css")));
-// app.use("/public/pics", express.static(path.join(__dirname, "public/pics")));
-
 app.use("/", require("./server/api/users.js"));
 app.use("/", require("./server/api/auth.js"));
 app.use("/", (req, res, next) =>
