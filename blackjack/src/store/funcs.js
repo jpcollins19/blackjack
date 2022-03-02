@@ -70,6 +70,8 @@ const calcHand = (arr) => {
           return calcObj[valueText];
         })
         .reduce((a, b) => a + b);
+    } else {
+      total = testingTotal1;
     }
   } else {
     testingTotal1 = arr

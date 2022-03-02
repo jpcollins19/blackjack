@@ -6,7 +6,7 @@ const Your_Cards_Row = ({ hitCards }) => {
     <div className="your-cards-row">
       <div className="card-cont-marg-top">
         {hitCards.length > 0 &&
-          hitCards.map((card) => <div key={card} className={card}></div>)}
+          hitCards.map((card, idx) => <div key={idx} className={card}></div>)}
       </div>
     </div>
   );

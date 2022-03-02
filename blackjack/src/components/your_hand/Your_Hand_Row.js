@@ -6,7 +6,9 @@ const Your_Hand_Row = ({ startingHand }) => {
     <div className="your-hand-row">
       <div className="card-cont-your-hand">
         {startingHand.length > 0 ? (
-          startingHand.map((card) => <div key={card} className={card}></div>)
+          startingHand.map((card, idx) => (
+            <div key={idx} className={card}></div>
+          ))
         ) : (
           <div></div>
         )}

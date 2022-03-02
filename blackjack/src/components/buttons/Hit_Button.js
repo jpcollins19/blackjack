@@ -1,9 +1,13 @@
+import { useSelector } from "react-redux";
 import "./Buttons.css";
 
-const Hit_Button = ({ hit, yourHandTotal }) => {
+const Hit_Button = ({ hit }) => {
+  const yourHandTotal = useSelector((state) => state.yourHandCalc);
+  const userTurn = useSelector((state) => state.userTurn);
+
   return (
     <button
-      disabled={yourHandTotal >= 21}
+      disabled={!userTurn || yourHandTotal >= 21}
       onClick={() => hit()}
       className="hit-button"
     >

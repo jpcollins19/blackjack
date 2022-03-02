@@ -4,11 +4,18 @@ import "./Dealer_Hand.css";
 import "../Card_Images.css";
 
 const Dealer_Hand_Row = ({ startingHand }) => {
+  const userTurn = useSelector((state) => state.userTurn);
+
   return (
     <div className="dealer-hand-row">
       <div className="card-cont-dealer-hand">
         {startingHand.length > 0 ? (
-          startingHand.map((card) => <div key={card} className={card}></div>)
+          startingHand.map((card, idx) => (
+            <div
+              key={idx}
+              className={userTurn && idx === 0 ? "card-back" : card}
+            ></div>
+          ))
         ) : (
           <div></div>
         )}

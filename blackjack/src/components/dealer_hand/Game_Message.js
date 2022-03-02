@@ -3,7 +3,6 @@ import "./Dealer_Hand.css";
 
 const Game_Message = () => {
   const yourHandTotal = useSelector((state) => state.yourHandCalc);
-  // console.log("your-hand-total-from-store-info", yourHandTotal);
 
   let message;
 
@@ -11,6 +10,8 @@ const Game_Message = () => {
     message = "Bust!";
   } else if (yourHandTotal === 21) {
     message = "You got 21!";
+  } else {
+    message = "";
   }
 
   return <div className="message-cont">{message}</div>;

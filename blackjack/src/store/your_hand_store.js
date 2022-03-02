@@ -3,7 +3,7 @@ import { calcHand } from "./funcs";
 const FETCH_USER_HAND = "FETCH_USER_HAND";
 const HIT_USER = "HIT_USER";
 const CLEAR_HAND = "CLEAR_HAND";
-const CALC_HAND = "CALC_HAND";
+const CALC_USER_HAND = "CALC_USER_HAND";
 
 const _fetchUserHand = () => {
   return { type: FETCH_USER_HAND };
@@ -17,8 +17,8 @@ const _clearHand = () => {
   return { type: CLEAR_HAND };
 };
 
-const _calcHand = (total) => {
-  return { type: CALC_HAND, total };
+const _calcUserHand = (total) => {
+  return { type: CALC_USER_HAND, total };
 };
 
 export const fetchUserHand = () => {
@@ -39,10 +39,10 @@ export const clearHand = () => {
   };
 };
 
-export const calculateHand = (arr) => {
+export const calculateUserHand = (arr) => {
   return async (dispatch) => {
     const total = calcHand(arr);
-    dispatch(_calcHand(total));
+    dispatch(_calcUserHand(total));
   };
 };
 
@@ -63,7 +63,7 @@ export const yourHand = (state = [], action) => {
 
 export const yourHandCalc = (state = 0, action) => {
   switch (action.type) {
-    case CALC_HAND:
+    case CALC_USER_HAND:
       state = action.total;
       return state;
     default:

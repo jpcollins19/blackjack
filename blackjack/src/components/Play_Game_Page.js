@@ -5,25 +5,28 @@ import {
   hitDealer,
   hitUser,
   fetchUserHand,
+  fetchDealerHand,
   clearHand,
-  calculateHand,
+  calculateUserHand,
+  calculateDealerHand,
 } from "../store";
-import { calcHand } from "../store";
 import Your_Hand from "./your_hand/Your_Hand";
 import Dealer_Hand from "./dealer_hand/Dealer_Hand";
 import Middle_Row from "./middle_row/Middle_Row";
 import "./Play_Game.css";
 
 const Play_Game_Page = () => {
-  let [nextCard, setNextCard] = useState(1);
+  let [nextCard, setNextCard] = useState(0);
 
   const dispatch = useDispatch();
 
   let yourHand = useSelector((state) => state.yourHand);
-  let yourHandCalc = useSelector((state) => state.yourHandCalc);
+  let dealerHand = useSelector((state) => state.dealerHand);
   const deck = useSelector((state) => state.deck);
+  let dealerHandTotal = useSelector((state) => state.dealerHandCalc);
 
   useEffect(() => {
+    setNextCard(nextCard++);
     dispatch(hitUser(deck[nextCard]));
     setNextCard(nextCard++);
     dispatch(hitDealer(deck[nextCard]));
@@ -33,47 +36,43 @@ const Play_Game_Page = () => {
     dispatch(hitDealer(deck[nextCard]));
     setNextCard(nextCard++);
     dispatch(fetchUserHand());
-    dispatch(calculateHand(yourHand));
-  }, []);
+    dispatch(fetchDealerHand());
+    dispatch(calculateUserHand(yourHand));
+    dispatch(calculateDealerHand(dealerHand));
+  }, [yourHand, dealerHand]);
 
-  const startNextHand = async (value) => {
-    if (value) {
-      setNextCard(nextCard++);
-      dispatch(clearHand());
-    }
-
-    console.log("start Next Hand was called");
-
-    dispatch(hitUser(deck[nextCard]));
+  const startNextHand = () => {
     setNextCard(nextCard++);
-    dispatch(hitDealer(deck[nextCard]));
-    setNextCard(nextCard++);
-    dispatch(hitUser(deck[nextCard]));
-    setNextCard(nextCard++);
-    dispatch(hitDealer(deck[nextCard]));
-    setNextCard(nextCard++);
-
-    // dispatch(fetchUserHand());
-
-    // dispatch(calculateHand(yourHand));
+    dispatch(clearHand());
   };
-
-  // const newGame = () => {
-  //   startNextHand(false);
-  // };
 
   const hit = () => {
     setNextCard(nextCard++);
     dispatch(hitUser(deck[nextCard]));
     setNextCard(nextCard++);
-    dispatch(calculateHand(yourHand));
+    dispatch(calculateUserHand(yourHand));
+  };
+
+  const dealerIsUp = () => {
+    setNextCard(nextCard++);
+    dispatch(hitDealer(deck[nextCard]));
+    setNextCard(nextCard++);
+
+    dispatch(fetchDealerHand());
+    dispatch(calculateDealerHand(dealerHand));
+
+    console.log("dealerhandTotal - joe", dealerHandTotal);
   };
 
   return (
     <Router>
       <div className="play-game-page">
         <Dealer_Hand />
-        <Middle_Row hit={hit} startNextHand={startNextHand} />
+        <Middle_Row
+          hit={hit}
+          startNextHand={startNextHand}
+          dealerIsUp={dealerIsUp}
+        />
         <Your_Hand />
       </div>
     </Router>

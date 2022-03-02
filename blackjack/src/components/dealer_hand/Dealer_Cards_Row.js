@@ -6,7 +6,7 @@ const Dealer_Cards_Row = ({ hitCards }) => {
     <div className="dealer-cards-row">
       <div className="card-cont-marg-bottom">
         {hitCards.length > 0 ? (
-          hitCards.map((card) => <div key={card} className={card}></div>)
+          hitCards.map((card, idx) => <div key={idx} className={card}></div>)
         ) : (
           <div></div>
         )}
