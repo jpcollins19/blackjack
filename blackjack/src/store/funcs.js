@@ -129,6 +129,27 @@ const calcHand = (arr) => {
   return total;
 };
 
+const dealerIsUp = (nc, deck, dh) => {
+  let nextCard = nc;
+
+  let dealerHand = dh;
+
+  let dealerHandTotal = calcHand(dealerHand);
+
+  while (dealerHandTotal < 17) {
+    dealerHand.push(deck[nextCard]);
+    nextCard++;
+    dealerHandTotal = calcHand(dealerHand);
+  }
+
+  return {
+    nextCard,
+    dealerHand,
+    dealerHandTotal,
+  };
+};
+
 module.exports = {
   calcHand,
+  dealerIsUp,
 };

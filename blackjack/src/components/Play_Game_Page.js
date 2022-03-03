@@ -53,17 +53,6 @@ const Play_Game_Page = () => {
     dispatch(calculateUserHand(yourHand));
   };
 
-  const dealerIsUp = () => {
-    setNextCard(nextCard++);
-    dispatch(hitDealer(deck[nextCard]));
-    setNextCard(nextCard++);
-
-    dispatch(fetchDealerHand());
-    dispatch(calculateDealerHand(dealerHand));
-
-    console.log("dealerhandTotal - joe", dealerHandTotal);
-  };
-
   return (
     <Router>
       <div className="play-game-page">
@@ -71,7 +60,9 @@ const Play_Game_Page = () => {
         <Middle_Row
           hit={hit}
           startNextHand={startNextHand}
-          dealerIsUp={dealerIsUp}
+          nextCard={nextCard}
+          deck={deck}
+          dealerHand={dealerHand}
         />
         <Your_Hand />
       </div>

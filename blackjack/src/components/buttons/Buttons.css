@@ -16,6 +16,7 @@
   );
   border-radius: 0.5rem;
   cursor: pointer;
+  margin-bottom: 10rem;
 }
 
 .start-game-button {
@@ -101,4 +102,8 @@
   border-radius: 0.5rem;
   cursor: pointer;
   font-weight: bold;
+}
+
+.testing {
+  background-color: rgb(8, 39, 8);
 }

@@ -1,9 +1,10 @@
-import { calcHand } from "./funcs";
+import { calcHand, dealerIsUp } from "./funcs";
 
 const FETCH_DEALER_HAND = "FETCH_DEALER_HAND";
 const HIT_DEALER = "HIT_DEALER";
 const CLEAR_HAND = "CLEAR_HAND";
 const CALC_DEALER_HAND = "CALC_DEALER_HAND";
+const DEALER_IS_UP = "DEALER_IS_UP";
 
 const _fetchDealerHand = () => {
   return { type: FETCH_DEALER_HAND };
@@ -15,6 +16,10 @@ const _hitDealer = (card) => {
 
 const _calcDealerHand = (total) => {
   return { type: CALC_DEALER_HAND, total };
+};
+
+const _dealerIsUp = (nextCard, dealerHand, dealerHandTotal) => {
+  return { type: DEALER_IS_UP, nextCard, dealerHand, dealerHandTotal };
 };
 
 export const fetchDealerHand = () => {
@@ -36,6 +41,16 @@ export const calculateDealerHand = (arr) => {
   };
 };
 
+export const dealerIsUpThunk = (nc, deck, dh) => {
+  return async (dispatch) => {
+    const answer = dealerIsUp(nc, deck, dh);
+
+    dispatch(
+      _dealerIsUp(answer.nextCard, answer.dealerHand, answer.dealerHandTotal)
+    );
+  };
+};
+
 export const dealerHand = (state = [], action) => {
   switch (action.type) {
     case FETCH_DEALER_HAND:
@@ -46,6 +61,9 @@ export const dealerHand = (state = [], action) => {
     case CLEAR_HAND:
       state = [];
       return state;
+    case DEALER_IS_UP:
+      state = action.dealerHand;
+      return state;
     default:
       return state;
   }
@@ -55,6 +73,19 @@ export const dealerHandCalc = (state = 0, action) => {
   switch (action.type) {
     case CALC_DEALER_HAND:
       state = action.total;
+      return state;
+    case DEALER_IS_UP:
+      state = action.dealerHandTotal;
+      return state;
+    default:
+      return state;
+  }
+};
+
+export const nextCardAfterDealer = (state = 0, action) => {
+  switch (action.type) {
+    case DEALER_IS_UP:
+      state = action.nextCard;
       return state;
     default:
       return state;

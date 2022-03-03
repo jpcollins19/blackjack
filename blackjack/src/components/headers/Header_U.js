@@ -23,8 +23,9 @@ const Header_U = ({ handleClick }) => {
   return (
     <div>
       <AppBar
-        style={{ background: "rgb(8, 29, 8)" }}
-        color="primary"
+        style={{
+          background: "linear-gradient(rgb(8, 39, 8), rgb(10, 66, 10))",
+        }}
         position="sticky"
         elevation={0}
       >
@@ -45,12 +46,12 @@ const Header_U = ({ handleClick }) => {
         </Toolbar>
       </AppBar>
       <AppBar
-        component="div"
-        color="primary"
         position="static"
         elevation={0}
         sx={{ zIndex: 0 }}
-        style={{ background: "rgb(8, 29, 8)" }}
+        style={{
+          background: "linear-gradient(rgb(10, 66, 10), rgb(9, 85, 9))",
+        }}
       >
         <Toolbar>
           <Grid container alignItems="center" spacing={1}>
@@ -68,11 +69,13 @@ const Header_U = ({ handleClick }) => {
         </Toolbar>
       </AppBar>
       <AppBar
-        component="div"
         position="static"
         elevation={0}
         sx={{ zIndex: 0 }}
-        style={{ background: "rgb(8, 29, 8)" }}
+        style={{
+          background:
+            "linear-gradient(rgb(9, 85, 9), rgb(10, 66, 10), rgb(8, 39, 8))",
+        }}
       >
         <Link to="/home">
           <Tab label="Play Game" />

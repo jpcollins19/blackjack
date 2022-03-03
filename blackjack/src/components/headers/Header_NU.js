@@ -9,7 +9,13 @@ import "./Headers.css";
 const Header_NU = () => {
   return (
     <div>
-      <AppBar position="sticky" elevation={0} style={{ background: "#3949AB" }}>
+      <AppBar
+        position="sticky"
+        elevation={0}
+        style={{
+          background: "linear-gradient(rgb(186, 149, 241), rgb(163, 128, 206))",
+        }}
+      >
         <Toolbar>
           <Grid container spacing={1} alignItems="center">
             <Grid item xs />
@@ -26,11 +32,12 @@ const Header_NU = () => {
         </Toolbar>
       </AppBar>
       <AppBar
-        component="div"
-        position="static"
+        position="sticky"
         elevation={0}
         sx={{ zIndex: 0 }}
-        style={{ background: "#3949AB" }}
+        style={{
+          background: "linear-gradient(rgb(163, 128, 206), rgb(129, 71, 201))",
+        }}
       >
         <Toolbar>
           <Grid container alignItems="center" spacing={1}>
@@ -49,10 +56,12 @@ const Header_NU = () => {
       </AppBar>
       <AppBar
         component="div"
-        position="static"
+        position="sticky"
         elevation={0}
         sx={{ zIndex: 0 }}
-        style={{ background: "#3949AB" }}
+        style={{
+          background: "linear-gradient(rgb(129, 71, 201), rgb(33, 6, 65))",
+        }}
       >
         {" "}
         <Link to="/">
