@@ -13,7 +13,7 @@ const Header_NU = () => {
         position="sticky"
         elevation={0}
         style={{
-          background: "linear-gradient(rgb(186, 149, 241), rgb(163, 128, 206))",
+          background: "linear-gradient(rgb(87, 5, 238), rgb(79, 6, 197))",
         }}
       >
         <Toolbar>
@@ -36,7 +36,8 @@ const Header_NU = () => {
         elevation={0}
         sx={{ zIndex: 0 }}
         style={{
-          background: "linear-gradient(rgb(163, 128, 206), rgb(129, 71, 201))",
+          background:
+            "linear-gradient( rgb(79, 6, 197), rgb(61, 7, 146), rgb(58, 8, 116))",
         }}
       >
         <Toolbar>
@@ -60,7 +61,8 @@ const Header_NU = () => {
         elevation={0}
         sx={{ zIndex: 0 }}
         style={{
-          background: "linear-gradient(rgb(129, 71, 201), rgb(33, 6, 65))",
+          background:
+            "linear-gradient(rgb(58, 8, 116), rgb(33, 6, 65), rgb(25, 4, 49))",
         }}
       >
         {" "}

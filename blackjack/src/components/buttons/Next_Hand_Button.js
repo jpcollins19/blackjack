@@ -3,7 +3,7 @@ import { nextUp } from "../../store";
 import "./Buttons.css";
 
 const Next_Hand_Button = ({ startNextHand }) => {
-  const userTurn = useSelector((state) => state.userTurn);
+  const handIsOver = useSelector((state) => state.handIsOver);
   const yourHandTotal = useSelector((state) => state.yourHandCalc);
   const dispatch = useDispatch();
 
@@ -13,7 +13,7 @@ const Next_Hand_Button = ({ startNextHand }) => {
         yourHandTotal <= 21 && dispatch(nextUp());
         startNextHand();
       }}
-      disabled={!userTurn || yourHandTotal <= 21}
+      disabled={!handIsOver}
       className="next-hand-button"
     >
       Next Hand

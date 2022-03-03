@@ -20,10 +20,9 @@ const Play_Game_Page = () => {
 
   const dispatch = useDispatch();
 
-  let yourHand = useSelector((state) => state.yourHand);
-  let dealerHand = useSelector((state) => state.dealerHand);
+  const yourHand = useSelector((state) => state.yourHand);
+  const dealerHand = useSelector((state) => state.dealerHand);
   const deck = useSelector((state) => state.deck);
-  let dealerHandTotal = useSelector((state) => state.dealerHandCalc);
 
   useEffect(() => {
     setNextCard(nextCard++);

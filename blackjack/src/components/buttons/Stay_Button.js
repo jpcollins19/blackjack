@@ -13,7 +13,7 @@ const Stay_Button = ({ nextCard, deck, dealerHand }) => {
     <button
       disabled={!userTurn || yourHandCalc >= 21 || !dealComplete}
       onClick={() => {
-        dispatch(nextUp());
+        // dispatch(nextUp());
         dispatch(dealerIsUpThunk(nextCard + 1, deck, dealerHand));
       }}
       className="stay-button"
