@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   setGameMessage,
@@ -13,16 +12,14 @@ const Game_Message = ({ nextCard }) => {
   const dispatch = useDispatch();
 
   const yourHandTotal = useSelector((state) => state.yourHandCalc);
-  const handIsOver = useSelector((state) => state.handIsOver);
   const handHasBeenDealt = useSelector((state) => state.handHasBeenDealt);
-  const handStarted = useSelector((state) => state.handStarted);
   const gameMessage = useSelector((state) => state.gameMessage);
-  const gameMessageWasRelayed = useSelector(
-    (state) => state.gameMessageWasRelayed
-  );
   const deck = useSelector((state) => state.deck);
   const dealerTurn = useSelector((state) => state.dealerTurn);
   const dealerHand = useSelector((state) => state.dealerHand);
+  const gameMessageWasRelayed = useSelector(
+    (state) => state.gameMessageWasRelayed
+  );
 
   const relayMessages = () => {
     const relay1stMessage = () => {

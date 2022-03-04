@@ -15,7 +15,6 @@ const Dealer_Hand_Row = ({ startingHand, nextCard }) => {
 
   const FC = useSelector((state) => state.dealerHand[0]);
   const dealerTurn = useSelector((state) => state.dealerTurn);
-  // const handHasBeenDealt = useSelector((state) => state.handHasBeenDealt);
   const nextHandHasStarted = useSelector((state) => state.nextHandHasStarted);
 
   let [firstCard, setFirstCard] = useState("");
@@ -26,10 +25,6 @@ const Dealer_Hand_Row = ({ startingHand, nextCard }) => {
     setFirstCard("");
     setSecondCard("");
   }, [FC]);
-
-  // useEffect(() => {
-
-  // }, [dealerTurn]);
 
   const deal = () => {
     setTimeout(() => {
@@ -58,16 +53,9 @@ const Dealer_Hand_Row = ({ startingHand, nextCard }) => {
       setTimeout(() => {
         dispatch(handDealt(true));
         dispatch(usersTurn(true));
-        // dispatch(nextHandStarted(false));
         dispatch(gameMessageRelayed(false));
       }, 1000);
     };
-
-    // const tellNextUp = () => {
-    //   setTimeout(() => {
-    //     nextCard > 5 && dispatch(nextUp());
-    //   }, 1000);
-    // };
   };
 
   return (

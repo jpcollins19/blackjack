@@ -14,12 +14,10 @@ const Dealer_Hand = ({ nextCard }) => {
   }, [dealerHand]);
 
   const startingHand = dealerHand.slice(0, 2);
-  const hitCards = dealerHand.slice(2);
 
   return (
     <div>
       <Dealer_Hand_Row startingHand={startingHand} nextCard={nextCard} />
-      {/* <Dealer_Cards_Row hitCards={hitCards} /> */}
       <Dealer_Cards_Row />
     </div>
   );

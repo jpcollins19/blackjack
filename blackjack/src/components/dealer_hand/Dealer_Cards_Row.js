@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   fetchDealerHand,
-  dealersTurn,
   handOver,
   nextHandReady,
   setGameMessage,
@@ -16,14 +15,12 @@ const Dealer_Cards_Row = () => {
   const dealerTurn = useSelector((state) => state.dealerTurn);
   const dealerHand = useSelector((state) => state.dealerHand);
   const handIsOver = useSelector((state) => state.handIsOver);
-  const nextHandHasStarted = useSelector((state) => state.nextHandHasStarted);
   const hitCards = dealerHand.slice(2);
   const dealerHandTotal = useSelector((state) => state.dealerHandCalc);
   const yourHandTotal = useSelector((state) => state.yourHandCalc);
 
   let [cardRowInfo, setCardRowInfo] = useState([<div key={"joe"}></div>]);
   let [numOfHits, setNumOfHits] = useState(0);
-  // let [keyArrayInfo, setKeyArrayInfo] = useState([]);
   const keyArrayInfo = [];
 
   useEffect(() => {
@@ -32,11 +29,7 @@ const Dealer_Cards_Row = () => {
   }, [dealerTurn]);
 
   const relayCards = () => {
-    console.log("relay cards was called");
-
     const relayFinalHandInfo = () => {
-      console.log("relayFinalHandInfo was called");
-
       let gameResult;
 
       if (dealerHandTotal > 21) {
@@ -59,9 +52,6 @@ const Dealer_Cards_Row = () => {
 
     const showCards1 = () => {
       setTimeout(() => {
-        console.log("showCards1 timeout called");
-        console.log("hitCards1", hitCards);
-
         setCardRowInfo((oldArray) => [
           ...oldArray,
           <div
@@ -71,7 +61,6 @@ const Dealer_Cards_Row = () => {
         ]);
 
         setNumOfHits(numOfHits++);
-        console.log("num of hits after hook set", numOfHits);
 
         numOfHits !== hitCards.length &&
           setTimeout(() => {
@@ -84,9 +73,6 @@ const Dealer_Cards_Row = () => {
 
     const showCards = () => {
       setTimeout(() => {
-        console.log("showCards timeout called");
-        console.log("hitCards", hitCards);
-
         cardRowInfo.pop();
 
         setCardRowInfo((oldArray) => [
@@ -98,7 +84,6 @@ const Dealer_Cards_Row = () => {
         ]);
 
         setNumOfHits(numOfHits++);
-        console.log("num of hits after hook set", numOfHits);
 
         numOfHits !== hitCards.length &&
           setTimeout(() => {
@@ -112,26 +97,17 @@ const Dealer_Cards_Row = () => {
     hitCards.length === 0 ? relayFinalHandInfo() : showCards();
   };
 
-  // nextHandHasStarted && setCardRowInfo([<div key={"joe"}></div>]);
-
   if (dealerTurn && !handIsOver) {
     dispatch(handOver(true));
 
     setTimeout(() => {
-      console.log("first timeout called");
       relayCards();
     }, 2500);
   }
 
   return (
     <div className="dealer-cards-row">
-      <div className="card-cont-marg-bottom">
-        {/* {!dealerTurn ? <div></div> : relayCards()} */}
-        {/* {cardRowInfo.map((card) => {
-          return card;
-        })} */}
-        {cardRowInfo}
-      </div>
+      <div className="card-cont-marg-bottom">{cardRowInfo}</div>
     </div>
   );
 };
