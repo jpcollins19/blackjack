@@ -24,7 +24,8 @@ const Header_U = ({ handleClick }) => {
     <div>
       <AppBar
         style={{
-          background: "linear-gradient(rgb(8, 39, 8), rgb(10, 66, 10))",
+          background:
+            "linear-gradient(rgb(8, 39, 8), rgb(10, 66, 10), rgb(9, 85, 9))",
         }}
         position="sticky"
         elevation={0}
@@ -50,7 +51,8 @@ const Header_U = ({ handleClick }) => {
         elevation={0}
         sx={{ zIndex: 0 }}
         style={{
-          background: "linear-gradient(rgb(10, 66, 10), rgb(9, 85, 9))",
+          background:
+            "linear-gradient(rgb(9, 85, 9), rgb(10, 66, 10), rgb(8, 39, 8))",
         }}
       >
         <Toolbar>
@@ -61,25 +63,13 @@ const Header_U = ({ handleClick }) => {
                 variant="h3"
                 component="h1"
                 textAlign="center"
+                className="header"
               >
                 Blackjack
               </Typography>
             </Grid>
           </Grid>
         </Toolbar>
-      </AppBar>
-      <AppBar
-        position="static"
-        elevation={0}
-        sx={{ zIndex: 0 }}
-        style={{
-          background:
-            "linear-gradient(rgb(9, 85, 9), rgb(10, 66, 10), rgb(8, 39, 8))",
-        }}
-      >
-        <Link to="/home">
-          <Tab label="Play Game" />
-        </Link>
       </AppBar>
     </div>
   );

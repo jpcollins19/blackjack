@@ -13,7 +13,8 @@ const Header_NU = () => {
         position="sticky"
         elevation={0}
         style={{
-          background: "linear-gradient(rgb(87, 5, 238), rgb(79, 6, 197))",
+          background:
+            "linear-gradient(rgb(79, 6, 197), rgb(61, 7, 146), rgb(58, 8, 116))",
         }}
       >
         <Toolbar>
@@ -37,7 +38,7 @@ const Header_NU = () => {
         sx={{ zIndex: 0 }}
         style={{
           background:
-            "linear-gradient( rgb(79, 6, 197), rgb(61, 7, 146), rgb(58, 8, 116))",
+            "linear-gradient(  rgb(58, 8, 116), rgb(33, 6, 65), rgb(25, 4, 49))",
         }}
       >
         <Toolbar>
@@ -48,27 +49,13 @@ const Header_NU = () => {
                 variant="h3"
                 component="h1"
                 textAlign="center"
+                className="header"
               >
                 Blackjack
               </Typography>
             </Grid>
           </Grid>
         </Toolbar>
-      </AppBar>
-      <AppBar
-        component="div"
-        position="sticky"
-        elevation={0}
-        sx={{ zIndex: 0 }}
-        style={{
-          background:
-            "linear-gradient(rgb(58, 8, 116), rgb(33, 6, 65), rgb(25, 4, 49))",
-        }}
-      >
-        {" "}
-        <Link to="/">
-          <Tab label="Casino" />
-        </Link>
       </AppBar>
     </div>
   );
