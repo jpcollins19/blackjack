@@ -83,7 +83,7 @@ const Dealer_Hand_Row = ({ startingHand, nextCard }) => {
 
         <div className={secondCard}></div>
       </div>
-      <Game_Message />
+      <Game_Message nextCard={nextCard} />
     </div>
   );
 };

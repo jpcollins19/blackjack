@@ -8,25 +8,24 @@ export const loadDeck = () => {
   return async (dispatch) => {
     const suit = ["S", "C", "H", "D"];
     const cards = [
-      // "A",
+      "A",
       "two",
       "three",
       "four",
       "five",
       "six",
       "seven",
-      // "eight",
-      // "nine",
-      // "ten",
-      // "J",
-      // "Q",
-      // "K",
+      "eight",
+      "nine",
+      "ten",
+      "J",
+      "Q",
+      "K",
     ];
 
     const deck = [];
 
-    // for (let k = 0; k < 2; k++) {
-    for (let k = 0; k < 4; k++) {
+    for (let k = 0; k < 2; k++) {
       for (let i = 0; i < suit.length; i++) {
         for (let j = 0; j < cards.length; j++) {
           const card = `${cards[j]}${suit[i]}`;
@@ -38,11 +37,8 @@ export const loadDeck = () => {
     let counter = 0;
     const shuffledDeck = {};
 
-    // while (counter < 104) {
-    while (counter < 80) {
-      // const randomNum = Math.ceil(Math.random() * 104);
-      // const randomNum = Math.ceil(Math.random() * 104);
-      const randomNum = Math.ceil(Math.random() * 80);
+    while (counter < 104) {
+      const randomNum = Math.ceil(Math.random() * 104);
 
       if (!shuffledDeck.hasOwnProperty(randomNum)) {
         shuffledDeck[randomNum] = deck[counter];

@@ -32,7 +32,6 @@ const Your_Hand_Row = ({ startingHand }) => {
     const deal2 = () => {
       setTimeout(() => {
         setSecondCard(startingHand[1]);
-        // setDealOver(true);
       }, 2250);
     };
   };

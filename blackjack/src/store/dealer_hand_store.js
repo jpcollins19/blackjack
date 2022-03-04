@@ -44,7 +44,6 @@ export const calculateDealerHand = (arr) => {
 export const dealerIsUpThunk = (nc, deck, dh) => {
   return async (dispatch) => {
     const answer = dealerIsUp(nc, deck, dh);
-    console.log("thunk answer", answer);
 
     dispatch(
       _dealerIsUp(answer.nextCard, answer.dealerHand, answer.dealerHandTotal)
@@ -86,7 +85,7 @@ export const dealerHandCalc = (state = 0, action) => {
 export const nextCardAfterDealer = (state = 0, action) => {
   switch (action.type) {
     case DEALER_IS_UP:
-      state = action.nextCard;
+      state = action.nextCard - 1;
       return state;
     default:
       return state;

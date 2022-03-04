@@ -7,7 +7,7 @@ import "./Your_Hand.css";
 
 const Your_Hand = () => {
   const dispatch = useDispatch();
-  let yourHand = useSelector((state) => state.yourHand);
+  const yourHand = useSelector((state) => state.yourHand);
 
   useEffect(() => {
     dispatch(fetchUserHand());

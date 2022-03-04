@@ -40,7 +40,7 @@ const reducer = combineReducers({
   gameMessageWasRelayed,
   nextHandIsReady,
 });
-const middleware = applyMiddleware(thunk, logger);
+const middleware = applyMiddleware(thunk);
 const store = createStore(reducer, middleware);
 
 export default store;

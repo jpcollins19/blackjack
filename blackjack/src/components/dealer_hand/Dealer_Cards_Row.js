@@ -5,11 +5,10 @@ import {
   dealersTurn,
   handOver,
   nextHandReady,
+  setGameMessage,
 } from "../../store";
 import "./Dealer_Hand.css";
 import "../Card_Images.css";
-
-// let cardRowInfo = [<div key={"joe"}></div>];
 
 const Dealer_Cards_Row = () => {
   const dispatch = useDispatch();
@@ -18,11 +17,14 @@ const Dealer_Cards_Row = () => {
   const dealerHand = useSelector((state) => state.dealerHand);
   const handIsOver = useSelector((state) => state.handIsOver);
   const nextHandHasStarted = useSelector((state) => state.nextHandHasStarted);
-
   const hitCards = dealerHand.slice(2);
+  const dealerHandTotal = useSelector((state) => state.dealerHandCalc);
+  const yourHandTotal = useSelector((state) => state.yourHandCalc);
 
   let [cardRowInfo, setCardRowInfo] = useState([<div key={"joe"}></div>]);
   let [numOfHits, setNumOfHits] = useState(0);
+  // let [keyArrayInfo, setKeyArrayInfo] = useState([]);
+  const keyArrayInfo = [];
 
   useEffect(() => {
     dispatch(fetchDealerHand());
@@ -32,81 +34,91 @@ const Dealer_Cards_Row = () => {
   const relayCards = () => {
     console.log("relay cards was called");
 
-    // const card3 = () => {
-    //   setTimeout(() => {
-    //     console.log("card3 timeout called");
+    const relayFinalHandInfo = () => {
+      console.log("relayFinalHandInfo was called");
 
-    //     setCardRowInfo((oldArray) => [
-    //       ...oldArray,
-    //       <div key={numOfHits + 13} className={hitCards[numOfHits]}></div>,
-    //     ]);
-    //     setNumOfHits(numOfHits++);
+      let gameResult;
 
-    //     numOfHits !== hitCards.length && card4();
-    //     numOfHits === hitCards.length && dispatch(nextHandReady(true));
-    //     numOfHits === hitCards.length && setNumOfHits(0);
-    //   }, 2000);
-    // };
+      if (dealerHandTotal > 21) {
+        gameResult = "Dealer busts, you win!";
+      } else if (dealerHandTotal > yourHandTotal) {
+        gameResult = "Dealer has won the hand";
+      } else if (dealerHandTotal < yourHandTotal) {
+        gameResult = "Dealer stays, you win!";
+      } else if (dealerHandTotal === yourHandTotal) {
+        gameResult = "Push";
+      }
 
-    // const card2 = () => {
-    //   setTimeout(() => {
-    //     console.log("card2 timeout called");
+      dispatch(setGameMessage(gameResult));
 
-    //     // setCardRowInfo((oldArray) => [
-    //     //   ...oldArray,
-    //     //   <div key={numOfHits + 13} className={hitCards[numOfHits]}></div>,
-    //     // ]);
-
-    //     // cardRowInfo = [
-    //     //   ...cardRowInfo,
-    //     //   <div key={numOfHits + 13} className={hitCards[numOfHits]}></div>,
-    //     // ];
-
-    //     setNumOfHits(numOfHits++);
-
-    //     numOfHits !== hitCards.length && card2();
-    //     numOfHits === hitCards.length && dispatch(nextHandReady(true));
-    //     numOfHits === hitCards.length && setNumOfHits(0);
-    //   }, 2000);
-    // };
-
-    const card1 = () => {
       setTimeout(() => {
-        console.log("card1 timeout called");
+        numOfHits === hitCards.length && setNumOfHits(0);
+        numOfHits === hitCards.length && dispatch(nextHandReady(true));
+      }, 1000);
+    };
 
-        cardRowInfo.pop();
-
-        // cardRowInfo = [
-        //   ...cardRowInfo,
-        //   <div key={numOfHits + 13} className={hitCards[numOfHits]}></div>,
-        // ];
+    const showCards1 = () => {
+      setTimeout(() => {
+        console.log("showCards1 timeout called");
+        console.log("hitCards1", hitCards);
 
         setCardRowInfo((oldArray) => [
           ...oldArray,
-          <div key={numOfHits + 13} className={hitCards[numOfHits]}></div>,
+          <div
+            key={`${hitCards[numOfHits]}${numOfHits}`}
+            className={hitCards[numOfHits]}
+          ></div>,
         ]);
 
         setNumOfHits(numOfHits++);
+        console.log("num of hits after hook set", numOfHits);
 
         numOfHits !== hitCards.length &&
           setTimeout(() => {
-            card1();
+            showCards1();
           }, 1000);
 
-        numOfHits === hitCards.length && dispatch(nextHandReady(true));
-        numOfHits === hitCards.length && setNumOfHits(0);
+        numOfHits === hitCards.length && relayFinalHandInfo();
       }, 500);
     };
 
-    card1();
+    const showCards = () => {
+      setTimeout(() => {
+        console.log("showCards timeout called");
+        console.log("hitCards", hitCards);
+
+        cardRowInfo.pop();
+
+        setCardRowInfo((oldArray) => [
+          ...oldArray,
+          <div
+            key={`${hitCards[numOfHits]}${numOfHits}`}
+            className={hitCards[numOfHits]}
+          ></div>,
+        ]);
+
+        setNumOfHits(numOfHits++);
+        console.log("num of hits after hook set", numOfHits);
+
+        numOfHits !== hitCards.length &&
+          setTimeout(() => {
+            showCards1();
+          }, 1000);
+
+        numOfHits === hitCards.length && relayFinalHandInfo();
+      }, 500);
+    };
+
+    hitCards.length === 0 ? relayFinalHandInfo() : showCards();
   };
 
   // nextHandHasStarted && setCardRowInfo([<div key={"joe"}></div>]);
 
   if (dealerTurn && !handIsOver) {
+    dispatch(handOver(true));
+
     setTimeout(() => {
       console.log("first timeout called");
-      dispatch(handOver(true));
       relayCards();
     }, 2500);
   }
