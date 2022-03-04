@@ -1,82 +1,108 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  handOver,
+  nextHandStarted,
+  setGameMessage,
+  usersTurn,
+  handDealt,
+  gameMessageRelayed,
+  nextHandReady,
+} from "../../store";
 import "./Dealer_Hand.css";
 
 const Game_Message = () => {
+  const dispatch = useDispatch();
+
   const yourHandTotal = useSelector((state) => state.yourHandCalc);
   const userTurn = useSelector((state) => state.userTurn);
-  const dealComplete = useSelector((state) => state.dealComplete);
+  const handHasBeenDealt = useSelector((state) => state.handHasBeenDealt);
+  const handStarted = useSelector((state) => state.handStarted);
+  const gameMessage = useSelector((state) => state.gameMessage);
+  const gameMessageWasRelayed = useSelector(
+    (state) => state.gameMessageWasRelayed
+  );
 
-  let [dealOverMessageRelayed, setdealOverMessageRelayed] = useState(false);
-  let [dealOverMessage, setDealOverMessage] = useState("");
-  let [firstMessage, setFirstMessage] = useState("");
-  let [secondMessage, setSecondMessage] = useState("");
+  const dealerTurn = useSelector((state) => state.dealerTurn);
+
+  // useEffect(() => {}, [gameMessageWasRelayed]);
+
+  // let [gameMessageRelayed, setGameMessageRelayed] = useState(false);
 
   const relayMessages = () => {
-    if (!dealOverMessageRelayed) {
-      setDealOverMessage("Hit or Stay?");
-      setdealOverMessageRelayed(true);
-    }
-
-    const clear = () => {
+    console.log("relay Messages was called");
+    const clearMessage = () => {
       setTimeout(() => {
-        setDealOverMessage("");
-      }, 2000);
+        dispatch(setGameMessage(""));
+      }, 1000);
     };
 
-    clear();
+    // const handStartedClear = () => {
+    //   setTimeout(() => {
+    //     dispatch(nextHandStarted());
+    //     setGameMessage("");
+    //   }, 1000);
+    // };
+
+    // handStarted && handStartedClear();
+
+    // const relay2ndMessage = () => {
+    //   setTimeout(() => {
+    //     if (yourHandTotal > 21) {
+    //       dispatch(handOver(true));
+    //       dispatch(handDealt(false));
+    //       dispatch(setGameMessage("Play Again?"));
+    //     } else if (yourHandTotal === 21) {
+    //       dispatch(setGameMessage("Dealer is up!"));
+    //       dispatch(usersTurn(false));
+    //       clearMessage();
+    //     }
+
+    //     // else if (!userTurn) {
+    //     //   setGameMessage("Dealer is up!");
+    //     // }
+    //   }, 1500);
+    // };
 
     const relay1stMessage = () => {
+      dispatch(gameMessageRelayed(true));
       setTimeout(() => {
         if (yourHandTotal > 21) {
-          setFirstMessage("Bust!");
+          dispatch(setGameMessage("Bust!"));
+          dispatch(nextHandReady(true));
         } else if (yourHandTotal === 21) {
-          setFirstMessage("You got 21!");
-        } else if (!userTurn) {
-          setFirstMessage("Dealer is up!");
+          dispatch(setGameMessage("You got 21!"));
         }
+
+        // else if (dealerTurn) {
+        //   dispatch(setGameMessage("Dealer is up!"));
+        // }
         // relay2ndMessage();
       }, 500);
     };
 
     relay1stMessage();
-
-    // const relay2ndMessage = () => {
-    //   console.log("2ndmessag was called");
-    //   // setTimeout(() => {
-    //   //   if (yourHandTotal > 21) {
-    //   //     setFirstMessage("Bust!");
-    //   //   } else if (yourHandTotal === 21) {
-    //   //     setFirstMessage("You got 21!");
-    //   //   } else if (!userTurn) {
-    //   //     setFirstMessage("Dealer is up!");
-    //   //   }
-    //   //   relay2ndMessage();
-    //   // }, 500);
-
-    //   // setTimeout(() => {
-    //   //   if (yourHandTotal > 21) {
-    //   //     setSecondMessage("Play again?");
-    //   //   } else if (yourHandTotal === 21) {
-    //   //     setSecondMessage("Dealer is up!");
-    //   //   } else if (!userTurn) {
-    //   //     // firstMessage = "Dealer is up!";
-    //   //   }
-    //   // }, 1000);
-    // };
   };
 
-  dealComplete && !dealOverMessageRelayed && relayMessages();
+  const clearGameMessage = () => {
+    setTimeout(() => {
+      dispatch(gameMessageRelayed(true));
+      dispatch(setGameMessage(""));
+    }, 2000);
+  };
 
-  yourHandTotal > 21 && relayMessages();
+  handHasBeenDealt &&
+    yourHandTotal >= 21 &&
+    !gameMessageWasRelayed &&
+    relayMessages();
 
-  return (
-    <div className="message-cont">
-      {dealOverMessage}
-      {firstMessage}
-      {secondMessage}
-    </div>
-  );
+  dealerTurn && !gameMessageWasRelayed && clearGameMessage();
+
+  // handHasBeenDealt && dealerTurn && !gameMessageWasRelayed && relayMessages();
+
+  // handStarted && relayMessages();
+
+  return <div className="message-cont">{gameMessage}</div>;
 };
 
 export default Game_Message;

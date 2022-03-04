@@ -44,6 +44,7 @@ export const calculateDealerHand = (arr) => {
 export const dealerIsUpThunk = (nc, deck, dh) => {
   return async (dispatch) => {
     const answer = dealerIsUp(nc, deck, dh);
+    console.log("thunk answer", answer);
 
     dispatch(
       _dealerIsUp(answer.nextCard, answer.dealerHand, answer.dealerHandTotal)

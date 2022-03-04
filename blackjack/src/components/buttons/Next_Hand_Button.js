@@ -1,19 +1,35 @@
 import { useSelector, useDispatch } from "react-redux";
-import { nextUp } from "../../store";
+import {
+  usersTurn,
+  dealersTurn,
+  handOver,
+  nextHandStarted,
+  setGameMessage,
+  handDealt,
+  gameMessageRelayed,
+  nextHandReady,
+} from "../../store";
 import "./Buttons.css";
 
 const Next_Hand_Button = ({ startNextHand }) => {
-  const handIsOver = useSelector((state) => state.handIsOver);
-  const yourHandTotal = useSelector((state) => state.yourHandCalc);
+  const nextHandIsReady = useSelector((state) => state.nextHandIsReady);
+  const dealerTurn = useSelector((state) => state.dealerTurn);
   const dispatch = useDispatch();
 
   return (
     <button
       onClick={() => {
-        yourHandTotal <= 21 && dispatch(nextUp());
+        dispatch(setGameMessage(""));
+        dispatch(usersTurn(false));
+        dispatch(dealersTurn(false));
         startNextHand();
+        dispatch(handOver(false));
+        // dispatch(handDealt(false));
+        dispatch(nextHandStarted(true));
+        // dispatch(gameMessageRelayed(false));
+        dispatch(nextHandReady(false));
       }}
-      disabled={!handIsOver}
+      disabled={!nextHandIsReady}
       className="next-hand-button"
     >
       Next Hand

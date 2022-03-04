@@ -5,11 +5,11 @@ import "./Buttons.css";
 const Hit_Button = ({ hit }) => {
   const yourHandTotal = useSelector((state) => state.yourHandCalc);
   const userTurn = useSelector((state) => state.userTurn);
-  const dealComplete = useSelector((state) => state.dealComplete);
+  const handHasBeenDealt = useSelector((state) => state.handHasBeenDealt);
 
   return (
     <button
-      disabled={!userTurn || yourHandTotal >= 21 || !dealComplete}
+      disabled={!userTurn || yourHandTotal >= 21 || !handHasBeenDealt}
       onClick={() => hit()}
       className="hit-button"
     >

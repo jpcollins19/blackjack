@@ -55,7 +55,7 @@ const Play_Game_Page = () => {
   return (
     <Router>
       <div className="play-game-page">
-        <Dealer_Hand />
+        <Dealer_Hand nextCard={nextCard} />
         <Middle_Row
           hit={hit}
           startNextHand={startNextHand}
