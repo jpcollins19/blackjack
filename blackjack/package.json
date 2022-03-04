@@ -9,7 +9,7 @@
     "start:dev": "npm run build:dev & JWT=nugget nodemon server --ignore dist/ --ignore src/",
     "test": "mocha test-specs.js",
     "testing": "npm test -- --watch",
-    "start": "node server.js"
+    "start": "node server"
   },
   "keywords": [],
   "author": "",
